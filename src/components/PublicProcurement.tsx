@@ -1312,19 +1312,10 @@ const PublicProcurement = () => {
     ? mockArtisans
     : mockArtisans.filter(artisan => artisan.profession === selectedProfession);
 
-  return (
+    return (
     <div id="commande-publique" className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex items-center gap-4 mb-8">
-          <Link
-            to="/"
-            className="flex items-center text-primary-600 hover:text-primary-700"
-          >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Retour à l'accueil
-          </Link>
-        </div>
-
+        
         <h1 className="text-4xl font-bold text-primary-800 mb-2">Commande Publique</h1>
         <p className="text-xl text-primary-600 mb-8">
           Découvrez nos artisans agréés pour vos projets de marchés publics
