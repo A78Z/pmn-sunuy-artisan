@@ -31,13 +31,7 @@ function App() {
                 <WhatsAppWidget />
               </>
             } />
-            <Route path="/concours" element={
-              <>
-                <Contest />
-                <Footer />
-                <WhatsAppWidget />
-              </>
-            } />
+      
             <Route path="/" element={
               <>
                 <Hero />
@@ -46,6 +40,8 @@ function App() {
                 <About />
                 <Features />
                 <Solution />
+                <Contest/>
+                <PublicProcurement/>
                 <Contact />
                 <Footer />
                 <WhatsAppWidget />

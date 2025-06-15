@@ -65,12 +65,10 @@ const Navbar = () => {
               <NavLink href="#about">SUÑUY ARTISAN</NavLink>
               <NavLink href="#features">FONCTIONNALITÉS</NavLink>
               <NavLink href="#solution">AVANTAGES</NavLink>
-              <Link to="/commande-publique" className="text-primary-800 px-3 py-2 rounded-md text-sm font-medium hover:text-primary-600 transition-colors">
+              <NavLink href="#commande-publique" >
                 COMMANDE PUBLIQUE
-              </Link>
-              <Link to="/concours" className="text-primary-800 px-3 py-2 rounded-md text-sm font-medium hover:text-primary-600 transition-colors">
-                CONCOURS
-              </Link>
+              </NavLink>
+              <NavLink href="#contest"> CONCOURS </NavLink>
               <NavLink href="#contact">CONTACT</NavLink>
             </div>
           </div>

@@ -91,7 +91,7 @@ const Contest = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div id="contest" className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-2xl mx-auto px-4">
         <div className="bg-white rounded-xl shadow-md p-6 space-y-8">
           <div className="text-center">
@@ -118,6 +118,7 @@ const Contest = () => {
                   type="text"
                   id="firstName"
                   required
+                  placeholder="Prénom et Nom"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   value={formData.firstName}
                   onChange={e => setFormData({ ...formData, firstName: e.target.value })}
@@ -149,6 +150,7 @@ const Contest = () => {
                   type="text"
                   id="cin"
                   required
+                  placeholder="Numéro de la CNI"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   value={formData.cin}
                   onChange={handleCINChange}
@@ -163,6 +165,7 @@ const Contest = () => {
                   type="tel"
                   id="phone"
                   required
+                  placeholder="Numéro de téléphone"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   value={formData.phone}
                   onChange={e => setFormData({ ...formData, phone: e.target.value })}
@@ -171,7 +174,7 @@ const Contest = () => {
 
               <div className="md:col-span-2">
                 <label htmlFor="photo" className="block text-sm font-medium text-gray-700 mb-1">
-                  Photo d'identité récente
+                  Téléverser la carte d'identité (recto et verso)
                 </label>
                 <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
                   <div className="space-y-1 text-center">
@@ -306,6 +309,7 @@ const Contest = () => {
                   <textarea
                     id="references"
                     rows={3}
+                     placeholder="Références professionnelles ou partenaires"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
@@ -323,6 +327,7 @@ const Contest = () => {
                   <input
                     type="text"
                     id="gps"
+                   placeholder="Ex. : près de l'école Keur Khadija"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
@@ -335,6 +340,7 @@ const Contest = () => {
                     type="text"
                     id="workshop"
                     required
+                    placeholder="Nom de l'atelier ou de l'entreprise"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     value={formData.workshop}
                     onChange={e => setFormData({ ...formData, workshop: e.target.value })}
@@ -349,6 +355,7 @@ const Contest = () => {
                     type="text"
                     id="ninea"
                     required
+                    placeholder="Numéro d'identification national"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     value={formData.ninea}
                     onChange={e => setFormData({ ...formData, ninea: e.target.value })}
@@ -362,6 +369,7 @@ const Contest = () => {
                   <input
                     type="text"
                     id="approval"
+                     placeholder="Numéro d'agrément"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     value={formData.approval}
                     onChange={e => setFormData({ ...formData, approval: e.target.value })}
@@ -440,6 +448,7 @@ const Contest = () => {
                 id="motivation"
                 required
                 rows={4}
+                 placeholder="Expliquez en quelques mots pourquoi vous souhaitez participer"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 value={formData.motivation}
                 onChange={e => setFormData({ ...formData, motivation: e.target.value })}

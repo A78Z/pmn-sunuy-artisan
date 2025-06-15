@@ -51,7 +51,7 @@ const mockArtisans: Artisan[] = [
   {
     id: '1',
     name: 'Mamadou Diallo',
-    profession: 'Menuisier',
+    profession: 'Menuisier Bois',
     region: 'Dakar',
     department: 'Dakar',
     commune: 'Médina',
