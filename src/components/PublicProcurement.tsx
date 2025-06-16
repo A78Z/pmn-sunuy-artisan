@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { Star, Phone, MapPin, Building, FileCheck, Award, History, Mail, ArrowLeft, Calendar, Clock, Upload, X, Camera } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -444,7 +445,7 @@ const mockArtisans: Artisan[] = [
   }
   ,
   {
-    "id": "20",
+    "id": "21",
     "name": "Aissatou Mbaye",
     "profession": "Boulangerie – Pâtisserie",
     "region": "Dakar",
@@ -452,7 +453,7 @@ const mockArtisans: Artisan[] = [
     "commune": "Bargny",
     "address": "Route Nationale, Quartier Tann",
     "phone": "+221 76 456 78 90",
-    "company": "Délices d’Aissatou",
+    "company": "Délices d'Aissatou",
     "cardNumber": "CART-2024-019",
     "approvalNumber": "AGR-2024-019",
     "publicMarkets": [
@@ -494,6 +495,78 @@ const marketTypes = [
   'Travaux',
   'Service'
 ];
+
+const AnimatedTitle = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
+
+  const title = "Commande Publique".split('');
+  const subtitle = "Découvrez nos artisans agréés pour vos projets de marchés publics".split(' ');
+
+  return (
+    <div ref={ref} className="text-center mb-16">
+      <div className="relative inline-block">
+        <div className="relative">
+          {title.map((letter, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.5,
+                delay: i * 0.03,
+                ease: "easeOut"
+              }}
+              className="inline-block text-3xl md:text-4xl font-bold text-primary-800"
+            >
+              {letter === ' ' ? '\u00A0' : letter}
+            </motion.span>
+          ))}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{
+              duration: 0.8,
+              delay: title.length * 0.03,
+              ease: "easeOut"
+            }}
+            className="absolute -bottom-2 left-0 right-0 h-1 bg-primary-500 origin-left"
+          />
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{
+            duration: 0.5,
+            delay: title.length * 0.03 + 0.3
+          }}
+          className="absolute -left-4 -right-4 top-1/2 -bottom-2 bg-primary-100 -z-10 rounded-full blur-xl"
+        />
+      </div>
+      
+      <div className="mt-6 max-w-2xl mx-auto">
+        {subtitle.map((word, i) => (
+          <motion.span
+            key={i}
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{
+              duration: 0.5,
+              delay: (title.length * 0.03) + (i * 0.1),
+              ease: "easeOut"
+            }}
+            className="inline-block text-lg text-primary-600 mx-1"
+          >
+            {word}
+          </motion.span>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const MarketProposalModal = ({ artisan, isOpen, onClose }: { artisan: Artisan; isOpen: boolean; onClose: () => void }) => {
   const [proposal, setProposal] = useState<MarketProposal>({
@@ -1316,10 +1389,7 @@ const PublicProcurement = () => {
     <div id="commande-publique" className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
-        <h1 className="text-4xl font-bold text-primary-800 mb-2">Commande Publique</h1>
-        <p className="text-xl text-primary-600 mb-8">
-          Découvrez nos artisans agréés pour vos projets de marchés publics
-        </p>
+        <AnimatedTitle />
 
         <div className="flex flex-wrap gap-3 mb-8">
           {professions.map(profession => (
